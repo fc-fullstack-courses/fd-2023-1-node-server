@@ -1,0 +1,21 @@
+{
+  "name": "fd-2023-1-node-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "async.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./async.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fc-fullstack-courses/fd-2023-1-node-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fc-fullstack-courses/fd-2023-1-node-server/issues"
+  },
+  "homepage": "https://github.com/fc-fullstack-courses/fd-2023-1-node-server#readme"
+}

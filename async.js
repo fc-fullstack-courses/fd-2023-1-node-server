@@ -80,7 +80,7 @@ async function errorExample() {
     }
 
     console.log('success');
-    
+
   } catch (error) {
     console.log(error.message);
   } finally {
@@ -88,4 +88,15 @@ async function errorExample() {
   }
 }
 
-errorExample();
+// errorExample();
+const users = await getUsers3();
+console.log(users);
+
+/*
+Написать асинхронную функцию которая будет возвращать массив всех js примитивных данных
+
+Получить значение из функции выше без использования метода then
+
+Переделать функцию в апи на асинхронную
+
+*/
