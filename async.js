@@ -54,3 +54,19 @@ async function getUsers3() {
 
   return data.results;
 }
+
+async function printUsers() {
+  const users = await getUsers3();
+
+  console.log(users);
+}
+
+printUsers();
+
+class Test {
+  async testMethod() {}
+
+  static async staticMethod() {}
+}
+
+const arrowFunc = async () => {};
