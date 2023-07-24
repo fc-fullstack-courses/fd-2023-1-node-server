@@ -1,0 +1,8 @@
+PUT http://localhost:5000/users HTTP/1.1
+Authorization: "Bearer gd783gr83gd.8hasd9hsadshd9s.oauhsd79823e9ed"
+Content-Type: "application/json"
+
+{
+  "email": "newmail@gmail.com",
+  "firstName": "Anton"
+}
