@@ -44,8 +44,8 @@ async function getUsers2() {
   return data.results;
 }
 
-const usersPromise2 = getUsers2();
-usersPromise2.then((users) => console.log(users));
+// const usersPromise2 = getUsers2();
+// usersPromise2.then((users) => console.log(users));
 
 async function getUsers3() {
   const response = await fetch('https://randomuser.me/api');
@@ -61,7 +61,7 @@ async function printUsers() {
   console.log(users);
 }
 
-printUsers();
+// printUsers();
 
 class Test {
   async testMethod() {}
@@ -70,3 +70,22 @@ class Test {
 }
 
 const arrowFunc = async () => {};
+
+async function errorExample() {
+  try {
+    const number = Math.random();
+
+    if (number > 0.5) {
+      throw new Error('Error happened');
+    }
+
+    console.log('success');
+    
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    console.log('finally');
+  }
+}
+
+errorExample();
