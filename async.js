@@ -80,7 +80,6 @@ async function errorExample() {
     }
 
     console.log('success');
-
   } catch (error) {
     console.log(error.message);
   } finally {
@@ -100,3 +99,17 @@ console.log(users);
 Переделать функцию в апи на асинхронную
 
 */
+
+async function task1() {
+  return ['adkjsadsa', 10, true, null, undefined, 1000n, Symbol()];
+}
+
+// const arr = await task1();
+// console.log(arr);
+
+async function task2() {
+  const arr = await task1();
+  console.log(arr);
+}
+
+task2();
