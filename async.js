@@ -88,8 +88,8 @@ async function errorExample() {
 }
 
 // errorExample();
-const users = await getUsers3();
-console.log(users);
+// const users = await getUsers3();
+// console.log(users);
 
 /*
 Написать асинхронную функцию которая будет возвращать массив всех js примитивных данных
@@ -107,9 +107,11 @@ async function task1() {
 // const arr = await task1();
 // console.log(arr);
 
-async function task2() {
-  const arr = await task1();
-  console.log(arr);
-}
+// async function task2() {
+//   const arr = await task1();
+//   console.log(arr);
+// }
 
-task2();
+// task2();
+
+console.log('async');
