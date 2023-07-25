@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/fc-fullstack-courses/fd-2023-1-node-server/issues"
   },
-  "homepage": "https://github.com/fc-fullstack-courses/fd-2023-1-node-server#readme"
+  "homepage": "https://github.com/fc-fullstack-courses/fd-2023-1-node-server#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
