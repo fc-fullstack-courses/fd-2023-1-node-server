@@ -2,9 +2,9 @@
   "name": "fd-2023-1-node-server",
   "version": "1.0.0",
   "description": "",
-  "main": "async.js",
+  "private": true,
   "scripts": {
-    "start": "node ./async.js"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
