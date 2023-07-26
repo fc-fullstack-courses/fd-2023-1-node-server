@@ -19,3 +19,34 @@ module.exports.getUsers = async (req, res) => {
   const users = await User.findAll();
   res.send(users);
 };
+
+module.exports.getUser = async (req, res, next) => {
+  const {
+    params: { userId },
+  } = req;
+
+  const user = await User.findById(+userId);
+
+  res.send(user);
+};
+
+module.exports.deleteUser = async (req, res, next) => {
+  const {
+    params: { userId },
+  } = req;
+
+  const deletedUser = await User.deleteById(+userId);
+
+  res.send(deletedUser);
+};
+
+module.exports.updatedUser = async (req, res, next) => {
+  const {
+    params: { userId },
+    body,
+  } = req;
+
+  const updatedUser = await User.updateById(+userId, body);
+
+  res.send(updatedUser);
+};
