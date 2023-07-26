@@ -1,4 +1,4 @@
-const users = [];
+const { User } = require('../models');
 
 module.exports.createUser = async (req, res) => {
   /*
@@ -8,14 +8,14 @@ module.exports.createUser = async (req, res) => {
     3.5 ОПЦИОНАЛЬНО создать сессию
     4. Отправить данные на клиент
   */
-  const { user } = req;
+  const { user: userData } = req;
 
-  user.id = Date.now();
-  users.push(user);
+  const user = await User.create(userData);
 
   res.send(user);
 };
 
 module.exports.getUsers = async (req, res) => {
+  const users = await User.findAll();
   res.send(users);
 };
