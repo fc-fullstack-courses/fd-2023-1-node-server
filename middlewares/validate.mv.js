@@ -1,12 +1,4 @@
-const yup = require('yup');
-
-const USER_CREATION_SCHEMA = yup.object({
-  email: yup.string().email().required(),
-  password: yup
-    .string()
-    .matches(/^[a-zA-Z0-9!@#$%^&*]{8,32}$/)
-    .required(),
-});
+const { USER_CREATION_SCHEMA } = require('../validation/usersValidation');
 
 const validateUser = async (req, res, next) => {
   try {
@@ -16,6 +8,6 @@ const validateUser = async (req, res, next) => {
   } catch (error) {
     res.send('Error, invalid user data');
   }
-}
+};
 
 module.exports.validateUser = validateUser;
