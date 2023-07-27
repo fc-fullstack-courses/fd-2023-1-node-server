@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const NotFoundError = require('../errors/NotFoundError');
 
 // путь к JSON файлу пользователей
 const userDbPath = path.resolve(__dirname, '..', 'db', 'users.json');
@@ -52,7 +53,7 @@ class User {
     if (foundUser) {
       return foundUser;
     } else {
-      throw new Error('User not found');
+      throw new NotFoundError('User not found');
     }
   }
 
@@ -71,7 +72,7 @@ class User {
       return foundUser;
     }
 
-    throw new Error('User not found');
+    throw new NotFoundError('User not found');
   }
 
   static async updateById(id, newValues) {
@@ -92,7 +93,7 @@ class User {
 
       return foundUser;
     } else {
-      throw new Error('User not found');
+      throw new NotFoundError('User not found');
     }
   }
 }
