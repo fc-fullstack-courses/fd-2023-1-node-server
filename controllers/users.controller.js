@@ -50,7 +50,7 @@ module.exports.deleteUser = async (req, res, next) => {
   res.send(deletedUser);
 };
 
-module.exports.updatedUser = async (req, res, next) => {
+module.exports.updateUser = async (req, res, next) => {
   const {
     params: { userId },
     body,

@@ -3,6 +3,9 @@ const { validateUser } = require('./middlewares/validate.mv');
 const UserController = require('./controllers/users.controller');
 const app = express();
 
+// миддлвер, который берет и ложит JSON данные в req.body в дальнейших миддлверах / обработчиках
+const bodyParser = express.json();
+
 app.get('/', function (request, response) {
   response.end(`Your method is ${request.method} and path is ${request.path}`);
 }); // GET request method
@@ -15,12 +18,11 @@ app.get('/users/:userId', UserController.getUser);
 
 app.delete('/users/:userId', UserController.deleteUser);
 
+app.put('/users/:userId', bodyParser, UserController.updateUser);
+
 app.get('/users/:userId/messages/:messageId', async (req, res, next) => {
   res.send(req.params);
 });
-
-// миддлвер, который берет и ложит JSON данные в req.body в дальнейших миддлверах / обработчиках
-const bodyParser = express.json();
 
 app.post('/users', bodyParser, validateUser, UserController.createUser);
 
