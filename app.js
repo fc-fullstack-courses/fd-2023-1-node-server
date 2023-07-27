@@ -1,8 +1,6 @@
 const express = require('express');
 const router = require('./routers');
-const { ValidationError } = require('yup');
-const ApplicationError = require('./errors/ApplicationError');
-const { basicErrorHandler } = require('./middlewares/errors');
+const { basicErrorHandler, yupValidationErrorHandler, applicationErrorHandler } = require('./middlewares/errors');
 
 const app = express();
 
@@ -15,6 +13,8 @@ app.get('/users/:userId/messages/:messageId', async (req, res, next) => {
   res.send(req.params);
 });
 
+app.use(yupValidationErrorHandler);
+app.use(applicationErrorHandler);
 app.use(basicErrorHandler);
 
 const PORT = 5000;
