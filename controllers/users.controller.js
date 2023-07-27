@@ -30,6 +30,16 @@ module.exports.getUser = async (req, res, next) => {
   res.send(user);
 };
 
+module.exports.getUserQuery = async (req, res, next) => {
+  const {
+    query: { id }, // содержит все данные, которы идут в урле после ?
+  } = req; 
+
+  const user = await User.findById(+id);
+
+  res.send(user);
+};
+
 module.exports.deleteUser = async (req, res, next) => {
   const {
     params: { userId },
