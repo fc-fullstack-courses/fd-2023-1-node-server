@@ -3,10 +3,14 @@ const { validateUser } = require('./middlewares/validate.mv');
 const UserController = require('./controllers/users.controller');
 const app = express();
 
+const router = express.Router();
+
+app.use(router);
+
 // миддлвер, который берет и ложит JSON данные в req.body в дальнейших миддлверах / обработчиках
 const bodyParser = express.json();
 
-app
+router
   .route('/users')
   .get(UserController.getUsers)
   .post(bodyParser, validateUser, UserController.createUser);
@@ -15,9 +19,9 @@ app
 
 // app.post('/users', bodyParser, validateUser, UserController.createUser);
 
-app.get('/user', UserController.getUserQuery);
+router.get('/user', UserController.getUserQuery);
 
-app
+router
   .route('/users/:userId')
   .get(UserController.getUser)
   .put(bodyParser, UserController.updateUser)
