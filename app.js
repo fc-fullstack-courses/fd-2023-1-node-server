@@ -13,6 +13,8 @@ app.get('/user', UserController.getUserQuery);
 
 app.get('/users/:userId', UserController.getUser);
 
+app.delete('/users/:userId', UserController.deleteUser);
+
 app.get('/users/:userId/messages/:messageId', async (req, res, next) => {
   res.send(req.params);
 });
