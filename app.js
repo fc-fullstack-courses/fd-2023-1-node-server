@@ -20,7 +20,8 @@ app.use(async (err, req, res, next) => {
   } else if (err instanceof ApplicationError) {
     res.status(err.status).send(err.message);
   } else {
-    res.status(500).send(err.message);
+    const code = err.status || 500;
+    res.status(code).send(err.message);
   }
 });
 

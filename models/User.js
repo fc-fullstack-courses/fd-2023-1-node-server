@@ -50,11 +50,13 @@ class User {
 
     const foundUser = userDB.find((user, index, arr) => user.id === id);
 
-    if (foundUser) {
-      return foundUser;
-    } else {
-      throw new NotFoundError('User not found');
-    }
+    return foundUser;
+
+    // if (foundUser) {
+    //   return foundUser;
+    // } else {
+    //   throw new NotFoundError('User not found');
+    // }
   }
 
   static async deleteById(id) {
