@@ -6,17 +6,28 @@ const app = express();
 // миддлвер, который берет и ложит JSON данные в req.body в дальнейших миддлверах / обработчиках
 const bodyParser = express.json();
 
-app.get('/users', UserController.getUsers);
+app
+  .route('/users')
+  .get(UserController.getUsers)
+  .post(bodyParser, validateUser, UserController.createUser);
 
-app.post('/users', bodyParser, validateUser, UserController.createUser);
+// app.get('/users', UserController.getUsers);
+
+// app.post('/users', bodyParser, validateUser, UserController.createUser);
 
 app.get('/user', UserController.getUserQuery);
 
-app.get('/users/:userId', UserController.getUser);
+app
+  .route('/users/:userId')
+  .get(UserController.getUser)
+  .put(bodyParser, UserController.updateUser)
+  .delete(UserController.deleteUser);
 
-app.delete('/users/:userId', UserController.deleteUser);
+// app.get('/users/:userId', UserController.getUser);
 
-app.put('/users/:userId', bodyParser, UserController.updateUser);
+// app.delete('/users/:userId', UserController.deleteUser);
+
+// app.put('/users/:userId', bodyParser, UserController.updateUser);
 
 app.get('/users/:userId/messages/:messageId', async (req, res, next) => {
   res.send(req.params);
