@@ -3,10 +3,11 @@ const router = require('./routers');
 
 const app = express();
 
-app.use(router);
-
 // миддлвер, который берет и ложит JSON данные в req.body в дальнейших миддлверах / обработчиках
-const bodyParser = express.json();
+app.use(express.json());
+app.use(router); // подключает миддлверы на все маршруты
+
+
 
 app.get('/users/:userId/messages/:messageId', async (req, res, next) => {
   res.send(req.params);
