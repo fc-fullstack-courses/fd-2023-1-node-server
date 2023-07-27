@@ -19,6 +19,10 @@ class User {
 
     const userDB = userDBString ? JSON.parse(userDBString) : [];
 
+    if (!userData.email || !userData.password) {
+      throw new Error('Insufficient user data');
+    }
+
     const newUser = await new User(userData);
 
     newUser.id = Date.now();
@@ -59,11 +63,15 @@ class User {
 
     const foundUser = userDB.find((user, index, arr) => user.id === id);
 
-    const newUserDB = userDB.filter((user) => user.id !== id);
+    if (foundUser) {
+      const newUserDB = userDB.filter((user) => user.id !== id);
 
-    await fs.writeFile(userDbPath, JSON.stringify(newUserDB, null, 4));
+      await fs.writeFile(userDbPath, JSON.stringify(newUserDB, null, 4));
 
-    return foundUser;
+      return foundUser;
+    }
+
+    throw new Error('User not found');
   }
 
   static async updateById(id, newValues) {
