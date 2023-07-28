@@ -3,9 +3,24 @@ const { User } = require('../models');
 
 module.exports.createUser = async (req, res, next) => {
   try {
-    const { user: userData } = req;
+    const { user: userData, file } = req;
 
-    const user = await User.create(userData);
+    const user = await User.create({ ...userData, imagePath: file.filename });
+
+    /*
+    {
+      "fieldname": "avatar",  // название поля файла
+      "originalname": "small-cat.png", // название файла который загружался
+      "encoding": "7bit", // кодировка файла
+      "mimetype": "image/png", // MIME-тип файла
+      "destination": "uploads/", // куда файл сохранился
+      // название сохраненного файла
+      "filename": "af24f444f3a459d4492643c3955a61fd", 
+      // полный путь к файлу
+      "path": "uploads/af24f444f3a459d4492643c3955a61fd", 
+      "size": 49911 // размер файла
+    }
+    */
 
     res.status(201).send(user);
   } catch (error) {
@@ -26,7 +41,7 @@ module.exports.getUser = async (req, res, next) => {
 
     const user = await User.findById(+userId);
 
-    if(!user) {
+    if (!user) {
       const error = createHttpError(404, 'User not found');
       return next(error);
     }
