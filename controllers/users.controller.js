@@ -1,7 +1,7 @@
 const createHttpError = require('http-errors');
 const { User } = require('../models');
 
-module.exports.createUser = async (req, res) => {
+module.exports.createUser = async (req, res, next) => {
   try {
     const { user: userData } = req;
 
