@@ -7,10 +7,11 @@ const userDbPath = path.resolve(__dirname, '..', 'db', 'users.json');
 
 class User {
   constructor(userData) {
-    const { email, password } = userData;
+    const { email, password, imagePath } = userData;
 
     this.email = email;
     this.password = password;
+    this.imagePath = imagePath;
 
     return Promise.resolve(this);
   }
